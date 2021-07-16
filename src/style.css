@@ -1,0 +1,59 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+}
+
+header {
+    height: 500px;
+    width: 100%;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    height: 200px;
+    width: 300px;
+}
+
+.links {
+    display: flex;
+    align-content: flex-end;
+}
+
+.container {
+    width: auto;
+    align-content: stretch;
+    align-items: baseline;
+
+}
+
+.data {
+    height: 400px;
+    width: 34%;
+}
+
+.poster {
+    height: 200px;
+    width: 34%;
+    
+}
+.containerposter{
+    width: 400px;
+    display: inline-block;
+    margin-left: 10px; 
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.namestitle{
+    width: 200px;
+    height: 25px;
+    justify-content: flex-start;
+    text-align: center;
+}

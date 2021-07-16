@@ -1,9 +1,2 @@
-// estas funciones son de ejemplo
+export const datas= './data/ghibli/ghibli.json';
 
-export const example = () => {
-  return 'example';
-};
-
-export const anotherExample = () => {
-  return 'OMG';
-};
