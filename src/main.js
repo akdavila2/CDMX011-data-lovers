@@ -1,6 +1,7 @@
 import { DataManager, } from './data.js';
 let manager = new DataManager; /// se instancia todo lo que esta adentro del DataManager, todos los this, aqui podre verlos.
 console.log('la clase', manager);
+
 const templatePoster = (manager) => {
     return `<picture>
        <img src= "${manager.poster}" alt= "${manager.title}" class= "imgfilm" id= "${manager.id}">
