@@ -34,58 +34,71 @@ label {
 
 .container {
     width: 100%;
+    
 }
 
 #gridMovies.gridMovies {
     display: grid;
+
+}
+div{
+      display: grid;  
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+      grid-row-gap: 80px;
+      padding-left: 30px;
+            
 }
 
-div {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: stretch;
-    grid-row-gap: 80px;
-    padding-left: 30px;
-}
+
+
 
 .flip-card {
+     
     perspective: 1000px;
-}
-
-.flip-card-inner {
+  }
+  
+  .flip-card-inner {
+    
+    
     transition: 2.00s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.flip-card:hover .flip-card-inner {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
+  }
+ 
+  .flip-card-front, .flip-card-back {
     position: absolute;
     width: 330px;
     height: 480px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-}
-
-.flip-card-front {
+  }
+  
+  .flip-card-front {
+    
     width: 330px;
     height: 480px;
-}
 
-.flip-card-back {
+  }
+  
+  .flip-card-back {
+    
     position: absolute;
     display: block;
     margin-left: 35px;
     background-color: #1267a0;
     color: white;
+    
+    
     transform: rotateY(180deg);
     width: 330px;
     height: 480px;
-}
+    
+  }
 
 .filter {
     display: flex;
@@ -136,3 +149,4 @@ div {
         flex-direction: column;
     }
 }
+
