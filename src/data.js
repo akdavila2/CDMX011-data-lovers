@@ -19,24 +19,28 @@ export function DataManager() {
         }
         //Metodo para cargar la data.
     this.load = async() => { //funcion es asincrona
-        const response = await fetch('/data/ghibli/ghibli.json'); //El método fetch() es una peticion get o post a una url en nuestro caso es local.
-        this.data = await response.json(); // respuesta de la funcion asincrona, por medio de la palabra await
-        this.ready = true;
-        process();
-        return this.ready;
-    }
-    this.filterByProducer = (producer) => { //Metodo filtrar por productor.
+            const response = await fetch('/data/ghibli/ghibli.json'); //El método fetch() es una peticion get o post a una url en nuestro caso es local.
+            this.data = await response.json(); // respuesta de la funcion asincrona, por medio de la palabra await
+            this.ready = true;
+            process();
+            return this.ready;
+        }
+        //Metodo filtrar por productor.
+    this.filterByProducer = (producer) => {
             if (!this.films) return []; //no se ha ejecutado el metodo load, no hay films para cargar.
             return this.films.filter((item) => {
                 return item.producer === producer;
             });
         }
-        //probando ambas juntas los sort
+        //ordena la lista de datos de manera ascendente o descendente, segun el campo pasado.
+        //option define si el ordenamiento es ascendente o descendente
+        //field nombre del campo en la data para ordenar, en nuestro caso title o release_data.
     this.sortData = (option, field) => {
         let checkIsUp = (a, b) => a > b;
         let types = ['upward', 'falling'];
         if (!types.includes(option)) return new Error('El tipo no existe');
         return this.films.sort((filmA, filmB) => {
+            console.log(2, field, 3, filmA[field], 4, filmB[field], 5, filmA);
             if (filmA[field] === filmB[field]) return 0; //aqui comparo los campos
             let isUp = checkIsUp(filmA[field], filmB[field]);
             if (option === 'upward') return isUp ? 1 : -1;

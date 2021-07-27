@@ -48,9 +48,8 @@ const start = async() => {
     }; // esto se ejecuta por cada select.
     document.querySelectorAll(`[data-field]`).forEach(mySelects);
 
-    const restore = () => document.getElementById('myForm').reset; //Restaurando los valores con el metodo HTMLFormElement.reset
-
+    //Restaurando los valores con el metodo HTMLFormElement.reset
+    const restore = () => document.getElementById('myForm').reset;
     //Pagina de mas informacion
-
 }
 start();
