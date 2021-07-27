@@ -21,8 +21,8 @@ const createOpcion = (value, text) => {
 const selectProducer = document.querySelector('#selectProducer');
 console.log('que me tares selectProducer', selectProducer)
 const gridMovies = document.querySelector('#gridMovies');
-const orderDate = document.querySelector('#orderDate');
-const orderFilms = document.querySelector('#orderFilms');
+//const orderDate = document.querySelector('#orderDate');
+//const orderFilms = document.querySelector('#orderFilms');
 const reset = document.querySelector('#reset')
 const start = async() => {
     await manager.load();
@@ -37,37 +37,12 @@ const start = async() => {
     // manager.years.forEach(item => orderDate.add(createOpcion(item, item)));
     manager.producer.forEach(item => selectProducer.add(createOpcion(item, item)));
     selectProducer.addEventListener('change', () => {
-            let optionProducer = selectProducer.value;
-            let filterProducer = manager.filterByProducer(optionProducer);
-            let listByProducer = '';
-            filterProducer.forEach((item) => listByProducer += templatePoster(item));
-            div.innerHTML = listByProducer;
-        })
-        // orderDate.addEventListener('change', (event) => {
-        //     let optionReleaseDate = orderDate.value;
-        //     let data = manager.sortData(optionReleaseDate);
-        //     console.log('data', data);
-        //     let listByReleaseData = '';
-        //     console.log('soy listByReleaseData', listByReleaseData)
-        //     data.forEach((item) => listByReleaseData += templatePoster(item));
-        //     div.innerHTML = listByReleaseData;
-        //     console.log('soy listByReleaseData', listByReleaseData)
-        // });
-        // orderFilms.addEventListener('change', (event) => {
-        //     let optionOrderFilms = orderFilms.value;
-        //     console.log('optionfilms', optionOrderFilms);
-        //     let data = manager.sortDataTitle(optionOrderFilms);
-        //     console.log('data', data);
-        //     let listByOrderFilms = '';
-        //     console.log('soy listByOrderFilms', listByOrderFilms)
-        //     data.forEach((item) => listByOrderFilms += templatePoster(item));
-        //     div.innerHTML = listByOrderFilms;
-        //     console.log('soy listByOrderFilms', listByOrderFilms)
-        // });
-        // let dataFieldOrder = document.querySelectorAll('[data-field]')
-        // let select
-        // const field = select.dataset.field;
-
+        let optionProducer = selectProducer.value;
+        let filterProducer = manager.filterByProducer(optionProducer);
+        let listByProducer = '';
+        filterProducer.forEach((item) => listByProducer += templatePoster(item));
+        div.innerHTML = listByProducer;
+    })
     const mySelects = (select) => {
         select.addEventListener('change', event => {
             let field = select.dataset.field;
@@ -78,7 +53,6 @@ const start = async() => {
             let listByOrder = '';
             data.forEach((item) => listByOrder += templatePoster(item));
             div.innerHTML = listByOrder;
-
         })
     }; // esto se ejecuta por cada select.
     let quiensoy = document.querySelectorAll(`[data-field]`).forEach(mySelects);
@@ -87,12 +61,6 @@ const start = async() => {
     const restore = () => document.getElementById('myForm').reset; //Restaurando los valores con el metodo HTMLFormElement.reset
 
     //Pagina de mas informacion
-
-
-
-
-
-
 
 }
 start();
