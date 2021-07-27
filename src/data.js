@@ -28,7 +28,7 @@ export function DataManager() {
     this.filterByProducer = (producer) => { //Metodo filtrar por productor.
             if (!this.films) return []; //no se ha ejecutado el metodo load, no hay films para cargar.
             return this.films.filter((item) => {
-                return item.producer == producer
+                return item.producer === producer;
             });
         }
         //probando ambas juntas los sort
