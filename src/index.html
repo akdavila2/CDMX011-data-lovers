@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,20 +11,18 @@
 <body>
     <div id="root"></div>
 
-    <header class="header"><img class="banner" src="img/banner calidad optima.png" alt="bannertotoros">
-
-    </header>
-    <section>
+    <header class="header"><img class="banner" src="img/bannerStudio2000500.png" alt="bannertotoros"></header>
+    <section class="container">
         <div class="filter">
             <form id="myForm">
                 <label for="films">Order Films</label>
-                <select name="orderFilms" id="orderFilms">
+                <select data-field="title" name="orderFilms" id="orderFilms">
                 <option value="0">Order</option>
                 <option value="upward" id="orderUpward">Upward (A-Z)</option>
                 <option value="falling" id="orderFalling">Falling (Z-A)</option>
             </select>
                 <label for="date">Release Date</label>
-                <select name="orderDate" id="orderDate">
+                <select data-field="release_data" name="orderDate" id="orderDate">
                 <option value="0">Order</option>
                 <option value="upward" id="orderUpwardDate">Upward &#8593;</option>
                 <option value="falling" id="orderFallingDate">Falling &#8595;</option>
@@ -40,8 +39,6 @@
                 <button class="button" id="reset" onclick="restore()">Reset</button>
             </form>
         </div>
-    </section>
-    <section class="container">
         <div id="gridMovies" class="gridMovies"></div>
     </section>
     <footer class="footer">

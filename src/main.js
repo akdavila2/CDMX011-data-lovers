@@ -3,11 +3,11 @@ let manager = new DataManager; /// se instancia todo lo que esta adentro del Dat
 console.log('la clase', manager);
 console.log('que trae producer', manager.filterByProducer('Hayao Miyazaki'));
 console.log('que trae años', manager.filterByProducer(1988));
-console.log('que tare films', manager.sortDataFilms);
+
 const templatePoster = (manager) => {
     return `<picture>
    
-    <img src= "${manager.poster}" alt= "${manager.title}" class= "imgfilm">
+    <img src= "${manager.poster}" alt= "${manager.title}" class= "imgfilm" id= "${manager.id}">
 
     </picture>`;
 }
@@ -19,6 +19,7 @@ const createOpcion = (value, text) => {
     }
     //constantes del DOM
 const selectProducer = document.querySelector('#selectProducer');
+console.log('que me tares selectProducer', selectProducer)
 const gridMovies = document.querySelector('#gridMovies');
 const orderDate = document.querySelector('#orderDate');
 const orderFilms = document.querySelector('#orderFilms');
@@ -28,7 +29,6 @@ const start = async() => {
     console.log('el manager', manager);
     //Mostrando los poster
     let outputPoster = [];
-
     const div = document.createElement('div'); //createElement() crea un elemento HTML especificado por su tagName.
     manager.films.forEach((items) => outputPoster += templatePoster(items)); //forEach recorre los elementos del arreglo films.
     div.innerHTML = outputPoster;
@@ -37,37 +37,62 @@ const start = async() => {
     // manager.years.forEach(item => orderDate.add(createOpcion(item, item)));
     manager.producer.forEach(item => selectProducer.add(createOpcion(item, item)));
     selectProducer.addEventListener('change', () => {
-        let optionProducer = selectProducer.value;
-        let filterProducer = manager.filterByProducer(optionProducer);
-        let listByProducer = '';
-        filterProducer.forEach((item) => listByProducer += templatePoster(item));
-        div.innerHTML = listByProducer;
-    })
-    orderDate.addEventListener('change', (event) => {
-        let optionReleaseDate = orderDate.value;
-        let data = manager.sortData(optionReleaseDate);
-        console.log('data', data);
-        let listByReleaseData = '';
-        console.log('soy listByReleaseData', listByReleaseData)
-        data.forEach((item) => listByReleaseData += templatePoster(item));
-        div.innerHTML = listByReleaseData;
-        console.log('soy listByReleaseData', listByReleaseData)
-    });
-    orderFilms.addEventListener('change', (event) => {
-        let optionOrderFilms = orderFilms.value;
-        console.log('optionfilms', optionOrderFilms);
-        let data = manager.sortDataTitle(optionOrderFilms);
-        console.log('data', data);
-        let listByOrderFilms = '';
-        console.log('soy listByOrderFilms', listByOrderFilms)
-        data.forEach((item) => listByOrderFilms += templatePoster(item));
-        div.innerHTML = listByOrderFilms;
-        console.log('soy listByOrderFilms', listByOrderFilms)
-    });
+            let optionProducer = selectProducer.value;
+            let filterProducer = manager.filterByProducer(optionProducer);
+            let listByProducer = '';
+            filterProducer.forEach((item) => listByProducer += templatePoster(item));
+            div.innerHTML = listByProducer;
+        })
+        // orderDate.addEventListener('change', (event) => {
+        //     let optionReleaseDate = orderDate.value;
+        //     let data = manager.sortData(optionReleaseDate);
+        //     console.log('data', data);
+        //     let listByReleaseData = '';
+        //     console.log('soy listByReleaseData', listByReleaseData)
+        //     data.forEach((item) => listByReleaseData += templatePoster(item));
+        //     div.innerHTML = listByReleaseData;
+        //     console.log('soy listByReleaseData', listByReleaseData)
+        // });
+        // orderFilms.addEventListener('change', (event) => {
+        //     let optionOrderFilms = orderFilms.value;
+        //     console.log('optionfilms', optionOrderFilms);
+        //     let data = manager.sortDataTitle(optionOrderFilms);
+        //     console.log('data', data);
+        //     let listByOrderFilms = '';
+        //     console.log('soy listByOrderFilms', listByOrderFilms)
+        //     data.forEach((item) => listByOrderFilms += templatePoster(item));
+        //     div.innerHTML = listByOrderFilms;
+        //     console.log('soy listByOrderFilms', listByOrderFilms)
+        // });
+        // let dataFieldOrder = document.querySelectorAll('[data-field]')
+        // let select
+        // const field = select.dataset.field;
+
+    const mySelects = (select) => {
+        select.addEventListener('change', event => {
+            let field = select.dataset.field;
+            console.log('soy field', field);
+            let option = select.value;
+            let data = manager.sortData(option, field);
+            console.log('VAriable data', data);
+            let listByOrder = '';
+            data.forEach((item) => listByOrder += templatePoster(item));
+            div.innerHTML = listByOrder;
+
+        })
+    }; // esto se ejecuta por cada select.
+    let quiensoy = document.querySelectorAll(`[data-field]`).forEach(mySelects);
+    console.log('quien soy', quiensoy)
 
     const restore = () => document.getElementById('myForm').reset; //Restaurando los valores con el metodo HTMLFormElement.reset
 
+    //Pagina de mas informacion
+
+
+
+
+
+
+
 }
-
-
 start();
