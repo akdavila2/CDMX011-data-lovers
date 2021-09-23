@@ -21,7 +21,8 @@ export function DataManager() {
         }
         //Metodo para cargar la data.
     this.load = async() => { //es una función asincrónica ya que está marcada con la async palabra clave.
-            const response = await fetch('../data/ghibli/ghibli.json'); //La API Fetch hace peticiones HTTP (usando GET, POSTy otros métodos) 
+           // const response = await fetch('../data/ghibli/ghibli.json'); //La API Fetch hace peticiones HTTP (usando GET, POSTy otros métodos) 
+      const response = await fetch('https://github.com/Laboratoria/CDMX011-data-lovers/blob/master/src/data/ghibli/ghibli.json'); //La API Fetch hace peticiones HTTP (usando GET, POSTy otros métodos) 
 
             //inicia una solicitud y devuelve una promesa. 
             //Debido a que la await palabra clave está presente, la función asincrónica se detiene hasta que se completa la solicitud.  
